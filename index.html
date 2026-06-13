@@ -1,11 +1,112 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="0; url=PhuongVy-DiAn.html">
-<title>Phương Vy</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gửi chị Phương Vy ❤️</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ffdde1,#ee9ca7);
+    font-family:Arial,sans-serif;
+    overflow:hidden;
+}
+
+.box{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 0 20px rgba(0,0,0,.15);
+    width:85%;
+    max-width:420px;
+}
+
+h1{
+    color:#ff4d6d;
+}
+
+button{
+    padding:12px 24px;
+    border:none;
+    border-radius:12px;
+    font-size:18px;
+    cursor:pointer;
+    margin:10px;
+}
+
+#yes{
+    background:#4CAF50;
+    color:white;
+}
+
+#no{
+    background:#ff4d6d;
+    color:white;
+    position:relative;
+}
+
+.heart{
+    position:absolute;
+    color:red;
+    animation:fall 5s linear infinite;
+}
+
+@keyframes fall{
+    from{
+        transform:translateY(-100px);
+    }
+    to{
+        transform:translateY(100vh);
+    }
+}
+</style>
 </head>
+
 <body>
-Đang chuyển hướng...
+
+<div class="box">
+    <h1>🌹 Gửi chị Phương Vy 🌹</h1>
+
+    <h2>Chị Phương Vy cho em mời chị một bữa nha? 😊</h2>
+
+    <p>Nếu chị bấm "Đồng ý" thì em vui cả ngày luôn đó ❤️</p>
+
+    <button id="yes"
+        onclick="document.getElementById('msg').innerHTML='🥰 Yayyy! Em đặt lịch luôn nha chị!'">
+        Đồng ý
+    </button>
+
+    <button id="no">
+        Từ chối
+    </button>
+
+    <h3 id="msg"></h3>
+</div>
+
+<script>
+const noBtn=document.getElementById("no");
+
+noBtn.addEventListener("mouseover",()=>{
+    noBtn.style.position="absolute";
+    noBtn.style.left=Math.random()*80+"%";
+    noBtn.style.top=Math.random()*80+"%";
+});
+
+for(let i=0;i<25;i++){
+    let heart=document.createElement("div");
+    heart.innerHTML="❤️";
+    heart.className="heart";
+    heart.style.left=Math.random()*100+"%";
+    heart.style.animationDuration=(Math.random()*3+3)+"s";
+    document.body.appendChild(heart);
+}
+</script>
+
 </body>
 </html>
