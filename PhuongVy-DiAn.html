@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chị Phương Vy Đi Ăn Không?</title>
+<style>
+body{margin:0;font-family:system-ui;background:linear-gradient(135deg,#1f2937,#374151);color:#fff}
+.page{display:none;min-height:100vh;justify-content:center;align-items:center;padding:20px}
+.active{display:flex}
+.card{max-width:720px;width:92%;background:#111827;padding:30px;border-radius:24px;box-shadow:0 10px 40px rgba(0,0,0,.4);text-align:center}
+button{border:none;padding:14px 24px;border-radius:16px;cursor:pointer;margin:8px;font-size:16px}
+.btn{background:#f3f4f6}
+.small{opacity:.8}
+</style>
+</head>
+<body>
+<div id="p1" class="page active"><div class="card">
+<h1>🚨 THÔNG BÁO</h1>
+<p>Một công dân tên <b>Phương Vy</b> vừa được chọn ngẫu nhiên.</p>
+<p class="small">(Xác suất: hoàn toàn không ngẫu nhiên 😆)</p>
+<button class="btn" onclick="go(2)">Xem tiếp</button>
+</div></div>
+
+<div id="p2" class="page"><div class="card">
+<h1>📋 HỒ SƠ NGƯỜI GỬI</h1>
+<p>👤 Ngoại hình: Tạm được</p>
+<p>🗣️ Tài ăn nói: Hên xui</p>
+<p>😂 Khả năng kể chuyện nhạt: Chuyên nghiệp</p>
+<p>🍜 Mục đích: Rủ chị Phương Vy đi ăn</p>
+<button class="btn" onclick="go(3)">Tiếp tục điều tra</button>
+</div></div>
+
+<div id="p3" class="page"><div class="card">
+<h1>🤖 ĐÁNH GIÁ TỪ AI</h1>
+<p>Việc nhắn:</p>
+<p><b>"Chị Phương Vy đi ăn không?"</b></p>
+<p>chỉ mất khoảng 3 giây.</p>
+<p>Việc làm website này mất khoảng 3 tiếng.</p>
+<h3>=> AI xác nhận đối tượng có dấu hiệu suy nghĩ quá nhiều 😆</h3>
+<button class="btn" onclick="go(4)">Cũng đúng...</button>
+</div></div>
+
+<div id="p4" class="page"><div class="card">
+<h1>🍽️ CHỌN MÓN ĂN</h1>
+<select id="food">
+<option>🍜 Lẩu</option><option>🥩 Đồ nướng</option><option>🍣 Sushi</option><option>🍕 Pizza</option><option>🧋 Trà sữa</option>
+</select><br><br>
+<button class="btn" onclick="go(5)">Xác nhận</button>
+</div></div>
+
+<div id="p5" class="page"><div class="card">
+<h1>📅 CHỌN NGÀY</h1>
+<input id="date" type="date">
+<p>🤖 AI ghi nhận: "Cuối cùng cũng chịu chọn ngày rồi."</p>
+<button class="btn" onclick="finish()">Tiếp tục</button>
+</div></div>
+
+<div id="p6" class="page"><div class="card">
+<h1>📄 KẾT LUẬN</h1>
+<p>Sau 3 phút tạo website...</p>
+<p>20 phút chỉnh hiệu ứng...</p>
+<p>và khoảng 50 lần đổi ý...</p>
+<hr>
+<h2>Mục đích thật sự là:</h2>
+<h1>🍜 CHỊ PHƯƠNG VY CÓ MUỐN ĐI ĂN CÙNG ANH KHÔNG?</h1>
+<p id="info"></p>
+<p>📌 Nếu chị đã đọc tới đây thì anh xem như mình có cơ hội 1% rồi 🤣</p>
+<button class="btn" onclick="alert('Tuyệt vời 😆')">Có nè</button>
+<button class="btn" onclick="alert('Anh xin ghi nhận 😆')">Được á</button>
+</div></div>
+
+<script>
+function go(n){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById('p'+n).classList.add('active');}
+function finish(){
+document.getElementById('info').innerHTML='🍽️ '+document.getElementById('food').value+'<br>📅 '+(document.getElementById('date').value||'Bí mật');
+go(6);
+}
+</script>
+</body>
+</html>
