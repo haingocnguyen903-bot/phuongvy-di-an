@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Huệ Anh Adventure</title>
+<style>
+body{margin:0;font-family:Segoe UI,sans-serif;background:linear-gradient(135deg,#1e1e2f,#ff9a9e);height:100vh;overflow:hidden;display:flex;justify-content:center;align-items:center;color:#fff}
+.box{width:92%;max-width:800px;background:rgba(0,0,0,.45);backdrop-filter:blur(10px);padding:30px;border-radius:25px;text-align:center}
+.hidden{display:none}
+button{padding:12px 22px;border:none;border-radius:25px;margin:8px;cursor:pointer}
+.main{background:#ff6fa5;color:white}
+#type{white-space:pre-wrap;line-height:1.8;text-align:left;min-height:220px}
+.star{font-size:80px;cursor:pointer}
+.fall{position:absolute;top:-50px;animation:fall linear infinite}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+</style>
+</head>
+<body>
+<div class="box">
+
+<div id="s1">
+<h1>🌙 Huệ Anh Adventure</h1>
+<p>Có một người đã mất khá lâu để làm thứ này...</p>
+<p>Và người đó hy vọng Huệ Anh sẽ mỉm cười khi mở nó. 🌸</p>
+<button class="main" onclick="show(2)">Bắt đầu</button>
+</div>
+
+<div id="s2" class="hidden">
+<h2>📩 Tin nhắn bí ẩn</h2>
+<div id="type"></div>
+</div>
+
+<div id="s3" class="hidden">
+<h2>🧩 Thu thập ký ức</h2>
+<button onclick="pick(this)">👵 Bà ngoại</button>
+<button onclick="pick(this)">📚 Cô giáo</button>
+<button onclick="pick(this)">😊 Nụ cười</button>
+<p id="count"></p>
+</div>
+
+<div id="s4" class="hidden">
+<h2>🔐 Mật khẩu</h2>
+<p>Người Huệ Anh nhắc đến nhiều nhất?</p>
+<input id="pw" placeholder="Nhập đáp án">
+<button onclick="checkPw()">Mở khóa</button>
+<p id="pwmsg"></p>
+</div>
+
+<div id="s5" class="hidden">
+<h2>💌 Lá thư</h2>
+<p>
+Chào Huệ Anh...<br><br>
+Anh không làm món quà này vì muốn gây áp lực cho em.<br><br>
+Chỉ là sau những lần trò chuyện, anh thấy em là một người rất dễ mến.<br><br>
+Anh mong sau này sẽ có thêm cơ hội được trò chuyện với em nhiều hơn,
+được hiểu em nhiều hơn và biết đâu sẽ trở thành một người bạn thân thiết của em.
+</p>
+<button class="main" onclick="show(6)">🤫 Một điều nữa</button>
+</div>
+
+<div id="s6" class="hidden">
+<h2>🌸 Điều chưa nói</h2>
+<p>
+Anh không mong điều gì vội vàng.<br><br>
+Chỉ mong có cơ hội được hiểu Huệ Anh nhiều hơn một chút.<br><br>
+Vậy thôi. ❤️
+</p>
+<button class="main" onclick="show(7)">Kết thúc</button>
+</div>
+
+<div id="s7" class="hidden">
+<h1>🏆 Achievement Unlocked</h1>
+<p>🌸 Huệ Anh đã hoàn thành cuộc phiêu lưu 🌸</p>
+<div class="star" onclick="lucky()">⭐</div>
+<p id="luck"></p>
+</div>
+
+</div>
+
+<script>
+function show(n){
+document.querySelectorAll('.box>div').forEach(x=>x.classList.add('hidden'));
+document.getElementById('s'+n).classList.remove('hidden');
+if(n==2) intro();
+}
+function intro(){
+let txt="Anh có một món quà nhỏ muốn gửi cho Huệ Anh...\n\nĐọc hết nhé 😄";
+let i=0,e=document.getElementById('type');e.innerHTML='';
+let t=setInterval(()=>{
+e.textContent+=txt[i]||'';i++;
+if(i>txt.length){clearInterval(t);setTimeout(()=>show(3),1200);}
+},35);
+}
+let c=0;
+function pick(b){if(b.disabled)return;b.disabled=true;c++;count.innerText='Đã thu thập '+c+'/3';if(c==3)setTimeout(()=>show(4),800);}
+function checkPw(){
+let v=document.getElementById('pw').value.toLowerCase().trim();
+if(v.includes('ba')) show(5);
+else pwmsg.innerText='Gợi ý: 👵';
+}
+function lucky(){
+luck.innerText='⭐ Hôm nay là một ngày tốt đẹp.';
+}
+setInterval(()=>{
+let f=document.createElement('div');
+f.className='fall';
+f.innerHTML=['🌸','✨','💖'][Math.floor(Math.random()*3)];
+f.style.left=Math.random()*100+'vw';
+f.style.animationDuration=(5+Math.random()*5)+'s';
+document.body.appendChild(f);
+setTimeout(()=>f.remove(),10000);
+},400);
+</script>
+</body>
+</html>
